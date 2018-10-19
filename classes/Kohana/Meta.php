@@ -39,32 +39,6 @@ abstract class Kohana_Meta {
 	protected $_tags = array();
 
 	/**
-	 * Get class instance and sets config properties
-	 * 
-	 * @param  array  $config  Optional configuration options
-	 * @return Meta
-	 */
-	public static function instance(array $config = array())
-	{
-		// Create class instance
-		if ( ! self::$_instance)
-		{
-			$class = get_called_class();
-			self::$_instance = new $class;
-		}
-		// Sets new configuration option
-		foreach ($config as $key => $value)
-		{
-			if (isset(self::$_instance->_cfg[$key]))
-			{
-				self::$_instance->_cfg[$key] = $value;
-			}
-		}
-		// Return instance
-		return self::$_instance;
-	}
-
-	/**
 	 * Load configuration and default tags
 	 *
 	 * @return void
@@ -72,7 +46,7 @@ abstract class Kohana_Meta {
 	 * @uses   Config
 	 * @uses   Config_Group
 	 */
-	protected function __construct()
+	public function __construct()
 	{
 		$this->_cfg = Kohana::$config->load('meta');
 		$this->load_from_config($this->_cfg['tags_config_groups']);
