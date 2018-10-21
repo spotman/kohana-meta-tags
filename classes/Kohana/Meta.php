@@ -176,7 +176,7 @@ abstract class Kohana_Meta {
 	{
 		return View::factory($this->_cfg['template'])
 			->set('tags', $this->get())
-			->render($file);
+			->render();
 	}
 
 	/**
