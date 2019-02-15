@@ -55,8 +55,8 @@ array_push(Meta::instance()->title, 'Product 123');
 ~~~
 **Loading tags from Config**<br>
 ~~~
-$meta->load_from_config('cms.meta_tags');
-$meta->load_from_config(array('site_main_config', 'second_config-blog.meta'));
+$meta->loadFromConfig('cms.meta_tags');
+$meta->loadFromConfig(array('site_main_config', 'second_config-blog.meta'));
 ~~~
 **Display\Render tags**<br>
 Add in your template(View) subview of meta module.<br>
