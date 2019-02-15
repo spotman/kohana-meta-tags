@@ -264,6 +264,10 @@ class Meta
             return 'http-equiv';
         }
 
+        if (strpos($name, 'fb:') === 0) {
+            return 'property';
+        }
+
         if (strpos($name, 'twitter:') === 0) {
             return 'name';
         }
