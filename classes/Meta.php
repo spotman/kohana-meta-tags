@@ -196,7 +196,9 @@ class Meta
 
     public function getSocialDescription(): string
     {
-        return $this->get('og:description') ?? $this->get('twitter:description');
+        $tag = $this->get('og:description') ?? $this->get('twitter:description');
+
+        return $tag ? $tag['content'] : null;
     }
 
     public function setSocialImage(string $url): void
@@ -223,7 +225,9 @@ class Meta
 
     public function getSocialTitle(): ?string
     {
-        return $this->get('og:title') ?? $this->get('twitter:title');
+        $tag = $this->get('og:title') ?? $this->get('twitter:title');
+
+        return $tag ? $tag['content'] : null;
     }
 
     public function setContentType(string $mimeType, string $encoding = null): void
