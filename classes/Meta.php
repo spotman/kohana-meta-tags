@@ -181,8 +181,22 @@ class Meta
     public function setDescription(string $text): void
     {
         $this->set('description', $text);
+    }
+
+    public function getDescription(): string
+    {
+        return $this->get('description');
+    }
+
+    public function setSocialDescription(string $text): void
+    {
         $this->set('og:description', $text);
         $this->set('twitter:description', $text);
+    }
+
+    public function getSocialDescription(): string
+    {
+        return $this->get('og:description') ?? $this->get('twitter:description');
     }
 
     public function setSocialImage(string $url): void
@@ -205,6 +219,11 @@ class Meta
     public function hasSocialTitle(): bool
     {
         return $this->get('og:title') || $this->get('twitter:title');
+    }
+
+    public function getSocialTitle(): ?string
+    {
+        return $this->get('og:title') ?? $this->get('twitter:title');
     }
 
     public function setContentType(string $mimeType, string $encoding = null): void
