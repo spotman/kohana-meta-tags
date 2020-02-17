@@ -61,7 +61,7 @@ class Meta
      *     Meta::instance()->loadFromConfig('cms.meta_tags');
      *     Meta::instance()->loadFromConfig(array('meta_tags', 'blog.meta'));
      *
-     * @param  string|array $group Config name or an array of them
+     * @param string|array $group Config name or an array of them
      *
      * @return Meta
      * @uses   Kohana
@@ -96,8 +96,8 @@ class Meta
     /**
      * Set tags
      *
-     * @param  string $tag   Tag name
-     * @param  string $value Content attribute
+     * @param string $tag   Tag name
+     * @param string $value Content attribute
      *
      * @return void
      */
@@ -121,7 +121,7 @@ class Meta
     /**
      * Get tags
      *
-     * @param  string $name
+     * @param string $name
      *
      * @return mixed
      */
@@ -138,7 +138,7 @@ class Meta
     /**
      * Delete tags
      *
-     * @param  string $name
+     * @param string $name
      *
      * @return Meta
      */
@@ -152,8 +152,8 @@ class Meta
     /**
      * Wrapper for get\set title tag
      *
-     * @param   string  $title  New title value
-     * @param   integer $method Action type for title array
+     * @param string  $title  New title value
+     * @param integer $method Action type for title array
      *
      * @return  void
      */
@@ -185,10 +185,26 @@ class Meta
         $this->set('twitter:description', $text);
     }
 
-    public function setImage(string $url): void
+    public function setSocialImage(string $url): void
     {
         $this->set('og:image', $url);
         $this->set('twitter:image', $url);
+    }
+
+    public function hasSocialImage(): bool
+    {
+        return $this->get('og:image') || $this->get('twitter:image');
+    }
+
+    public function setSocialTitle(string $title): void
+    {
+        $this->set('og:title', $title);
+        $this->set('twitter:title', $title);
+    }
+
+    public function hasSocialTitle(): bool
+    {
+        return $this->get('og:title') || $this->get('twitter:title');
     }
 
     public function setContentType(string $mimeType, string $encoding = null): void
